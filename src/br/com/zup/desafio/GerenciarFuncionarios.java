@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class GerenciarFuncionarios {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         Scanner entrada = new Scanner(System.in);
 
         Map<String, String> funcionarios = new HashMap<String, String>();
@@ -68,7 +68,9 @@ public class GerenciarFuncionarios {
                 for (String dadosFuncionario : funcionarios.keySet()) {
                     System.out.println(dadosFuncionario + funcionarios.get(dadosFuncionario));
                 }
+                Thread.sleep(2005);
                 System.out.println("----------------------------------------------------------");
+
 
             } else if (opcao == 3) {
                 chave = false;
