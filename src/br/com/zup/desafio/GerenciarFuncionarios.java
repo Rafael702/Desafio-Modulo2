@@ -48,6 +48,7 @@ public class GerenciarFuncionarios {
                 "| Nome do funcionário: " + nomeFuncionario + "| Telefone do Funcionário: " + telefoneFuncionario
                         + "| Email do Funcionário: " + emailFuncionario);
 
+        //Apresentando Funcionarios Cadastrados
         System.out.println("Lista de Funcionários: ");
         for (String dadosFuncionario : funcionarios.keySet()) {
             System.out.println(dadosFuncionario + funcionarios.get(dadosFuncionario));
