@@ -19,18 +19,20 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class GerenciarFuncionarios {
+    private static final int UM_SEGUNDO_EM_MILISEGUNDOS = 1_000;
+    private static final int TRES_SEGUNDOS_EM_MILISEGUNDOS = 3_000;
+    private static final int OPCAO_DE_ADICIONAR = 1;
+    private static final int OPCAO_DE_MOSTRAR_LISTA = 2;
+    private static final int OPCAO_DE_DELETAR = 3;
+    private static final int OPCAO_DE_SAIR = 4;
+
     public static void main(String[] args) throws Exception {
         Scanner entrada = new Scanner(System.in);
-
-        Map<String, String> funcionarios = new HashMap<String, String>();
-
+        Map<String, String> funcionarios = new HashMap<>();
         boolean chave = true;
         int opcao = 0;
 
-
         System.out.println("Olá! Seja Bem vindo ao Programa Gerenciador de Funcionários!!!");
-
-
         do {
             System.out.println("Digite 1: Para adicionar funcionários na lista de cadastrados.");
             System.out.println("Digite 2: Para exibir a lista de todos os funcionários cadastrados.");
@@ -40,7 +42,7 @@ public class GerenciarFuncionarios {
             opcao = entrada.nextInt();
             entrada.nextLine();
 
-            if (opcao == 1) {
+            if (opcao == OPCAO_DE_ADICIONAR) {
                 //Adicionando Funcionários
                 System.out.println("Informe o nome do funcionário: ");
                 String nomeFuncionario = entrada.nextLine();
@@ -48,7 +50,7 @@ public class GerenciarFuncionarios {
                 System.out.println("Informe o CPF do funcionário: ");
                 String cpfFuncionario = entrada.nextLine();
                 // Verificando a existência de duplicidade com condicionais.
-                if (funcionarios.size() != 0) {
+                if (!funcionarios.isEmpty()) {
                     if (funcionarios.containsKey(cpfFuncionario)) {
                         System.out.println("CPF não cadastrado");
                     } else {
@@ -61,9 +63,8 @@ public class GerenciarFuncionarios {
                                 + "| Telefone do Funcionário: " + telefoneFuncionario
                                 + "| Email do Funcionário: " + emailFuncionario);
                         System.out.println("Usuário cadastrado com Sucesso!!!");
-                        Thread.sleep(1000);
+                        Thread.sleep(UM_SEGUNDO_EM_MILISEGUNDOS);
                     }
-
                 } else {
                     System.out.println("Informe o número de telefone do funcionário para contato: ");
                     String telefoneFuncionario = entrada.nextLine();
@@ -74,22 +75,18 @@ public class GerenciarFuncionarios {
                             + "| Telefone do Funcionário: " + telefoneFuncionario
                             + "| Email do Funcionário: " + emailFuncionario);
                     System.out.println("Usuário cadastrado com Sucesso!!!");
-                    Thread.sleep(1000);
+                    Thread.sleep(UM_SEGUNDO_EM_MILISEGUNDOS);
                 }
-
-
-            } else if (opcao == 2) {
+            } else if (opcao == OPCAO_DE_MOSTRAR_LISTA) {
                 //Apresentando Funcionarios Cadastrados
                 System.out.println("Lista de Funcionários: ");
                 System.out.println("----------------------------------------------------------");
                 for (String dadosFuncionario : funcionarios.keySet()) {
                     System.out.println(dadosFuncionario + funcionarios.get(dadosFuncionario));
                 }
-                Thread.sleep(2005);
+                Thread.sleep(TRES_SEGUNDOS_EM_MILISEGUNDOS);
                 System.out.println("----------------------------------------------------------");
-
-
-            } else if (opcao == 3) {
+            } else if (opcao == OPCAO_DE_DELETAR) {
                 //Deletando Funcionário da Lista
                 System.out.println("Informe o CPF do Funcionario que você deseja deletar: ");
                 String cpfDeletarFunc = entrada.nextLine();
@@ -105,15 +102,12 @@ public class GerenciarFuncionarios {
                 } else {
                     System.out.println("CPF não encontrado. Verifique a lista de cadastros de Funcionário.");
                 }
-
-
-            } else if (opcao == 4) {
+            } else if (opcao == OPCAO_DE_SAIR) {
                 chave = false;
             } else {
                 System.out.println("Você digitou um valor inválido😐...");
                 System.out.println("Digite um valor entre 1 à 4, de acordo com o menu. 😉");
             }
-
         } while (chave == true);
 
         System.out.println("Foi um prazer te ter aqui!!");
