@@ -52,30 +52,17 @@ public class GerenciarFuncionarios {
             opcao = entrada.nextInt();
             entrada.nextLine();
 
+            //Adicionando Funcionários
             if (opcao == OPCAO_DE_ADICIONAR) {
-                //Adicionando Funcionários
-                System.out.println("Informe o nome do funcionário: ");
-                String nomeFuncionario = entrada.nextLine();
-
                 System.out.println("Informe o CPF do funcionário: ");
                 String cpfFuncionario = entrada.nextLine();
                 // Verificando a existência de duplicidade com condicionais.
                 if (!funcionarios.isEmpty()) {
-                    if (funcionarios.containsKey(cpfFuncionario)) {
-                        System.out.println("CPF não cadastrado");
-                    } else {
-                        System.out.println("Informe o número de telefone do funcionário para contato: ");
-                        String telefoneFuncionario = entrada.nextLine();
-
-                        System.out.println("Informe o email do funcionário para contato: ");
-                        String emailFuncionario = entrada.nextLine();
-                        funcionarios.put(cpfFuncionario, "| Nome do funcionário: " + nomeFuncionario
-                                + "| Telefone do Funcionário: " + telefoneFuncionario
-                                + "| Email do Funcionário: " + emailFuncionario);
-                        System.out.println("Usuário cadastrado com Sucesso!!!");
-                        Thread.sleep(UM_SEGUNDO_EM_MILISEGUNDOS);
-                    }
+                    validacaoCPF(funcionarios, cpfFuncionario);
                 } else {
+                    System.out.println("Informe o nome do funcionário: ");
+                    String nomeFuncionario = entrada.nextLine();
+
                     System.out.println("Informe o número de telefone do funcionário para contato: ");
                     String telefoneFuncionario = entrada.nextLine();
 
@@ -94,8 +81,8 @@ public class GerenciarFuncionarios {
                 for (String dadosFuncionario : funcionarios.keySet()) {
                     System.out.println(dadosFuncionario + funcionarios.get(dadosFuncionario));
                 }
-                Thread.sleep(TRES_SEGUNDOS_EM_MILISEGUNDOS);
                 System.out.println("----------------------------------------------------------");
+                Thread.sleep(TRES_SEGUNDOS_EM_MILISEGUNDOS);
             } else if (opcao == OPCAO_DE_DELETAR) {
                 //Deletando Funcionário da Lista
                 System.out.println("Informe o CPF do Funcionario que você deseja deletar: ");
@@ -127,3 +114,6 @@ public class GerenciarFuncionarios {
         System.out.println("\n---------------------------------------");
     }
 }
+
+
+
