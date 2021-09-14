@@ -19,6 +19,16 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class GerenciarFuncionarios {
+
+    public static void validacaoCPF(Map<String, String> func, String dadoCpf) throws Exception {
+        // Verificando a existência de duplicidade com condicionais.
+        if (!func.isEmpty()) {
+            if (func.containsKey(dadoCpf)) {
+                System.out.println("CPF não cadastrado!");
+            }
+        }
+    }
+
     private static final int UM_SEGUNDO_EM_MILISEGUNDOS = 1_000;
     private static final int TRES_SEGUNDOS_EM_MILISEGUNDOS = 3_000;
     private static final int OPCAO_DE_ADICIONAR = 1;
