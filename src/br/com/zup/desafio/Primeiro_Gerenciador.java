@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Primeiro_Gerenciador {
 
-    public static void validacaoCPF(Map<String, String> func, String dadoCpf) throws Exception {
+    public static void validacaoCPF(Map<String, String> func, String dadoCpf) {
         // Verificando a existência de duplicidade com condicionais.
         if (!func.isEmpty()) {
             if (func.containsKey(dadoCpf)) {
