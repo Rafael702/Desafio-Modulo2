@@ -20,17 +20,8 @@ import java.util.Scanner;
 
 public class GerenciarFuncionarios {
 
-    public static void validacaoCPF(Map<String, String> func, String dadoCpf) {
-        // Verificando a existência de duplicidade com condicionais.
-
-        if (!func.isEmpty()) {
-            if (func.containsKey(dadoCpf)) {
-                System.out.println("CPF não cadastrado!");
-            }
-        }
-    }
-
     private static final int UM_SEGUNDO_EM_MILISEGUNDOS = 1_000;
+
     private static final int TRES_SEGUNDOS_EM_MILISEGUNDOS = 3_000;
     private static final int OPCAO_DE_ADICIONAR = 1;
     private static final int OPCAO_DE_MOSTRAR_LISTA = 2;
@@ -45,11 +36,7 @@ public class GerenciarFuncionarios {
 
         System.out.println("Olá! Seja Bem vindo ao Programa Gerenciador de Funcionários!!!");
         do {
-            System.out.println("Digite 1: Para adicionar funcionários na lista de cadastrados.");
-            System.out.println("Digite 2: Para exibir a lista de todos os funcionários cadastrados.");
-            System.out.println("Digite 3: Deletar Funcionário: ");
-            System.out.println("Digite 4: Para Encerrar o programa.");
-            System.out.println("Escolha uma opção: ");
+            printMenu();
             opcao = entrada.nextInt();
             entrada.nextLine();
 
@@ -88,9 +75,7 @@ public class GerenciarFuncionarios {
                 //Deletando Funcionário da Lista
                 System.out.println("Informe o CPF do Funcionario que você deseja deletar: ");
                 String cpfDeletarFunc = entrada.nextLine();
-                //cpfDeletarFunc - Começará a Fazer parte da lista. Portanto,
-                // se seguirmos com a exclusão normalmente, a lista será diminuida e teremos um erro do tipo Exception.
-                //Por conta disso, uma variavel deve armazenar o valor.
+                //cpfDeletarFunc - Começará a Fazer parte da lista.
                 String cpfDeletado = "";
 
                 if (funcionarios.containsKey(cpfDeletarFunc)) {
@@ -108,11 +93,32 @@ public class GerenciarFuncionarios {
             }
         } while (chave == true);
 
+        saidaPrograma();
+    }
+
+    private static void saidaPrograma() {
         System.out.println("Foi um prazer te ter aqui!!");
         System.out.println("Volte mais vezes!!!❤");
         System.out.println("---------------------------------------");
         System.out.printf("%25s", "Fim do Programa");
         System.out.println("\n---------------------------------------");
+    }
+
+    private static void printMenu() {
+        System.out.println("Digite 1: Para adicionar funcionários na lista de cadastrados.");
+        System.out.println("Digite 2: Para exibir a lista de todos os funcionários cadastrados.");
+        System.out.println("Digite 3: Deletar Funcionário: ");
+        System.out.println("Digite 4: Para Encerrar o programa.");
+        System.out.println("Escolha uma opção: ");
+    }
+
+    public static void validacaoCPF(Map<String, String> funcionario, String dadoCpf) {
+        // Verificando a existência de duplicidade com condicionais.
+        if (!funcionario.isEmpty()) {
+            if (funcionario.containsKey(dadoCpf)) {
+                System.out.println("CPF não cadastrado!");
+            }
+        }
     }
 }
 
